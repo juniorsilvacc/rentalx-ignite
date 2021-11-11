@@ -1,0 +1,16 @@
+Public
+
+- Propriedades que podem acessar de fora da classe
+
+Extends 
+
+- Quando uma classe precisa herdar características de outra classe
+
+Implements
+
+- Quando uma classe precisa implementar os métodos de uma interface
+
+Contrutor
+
+- É chamado quando a classe é instanciada
+
