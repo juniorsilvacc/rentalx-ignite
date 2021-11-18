@@ -1,10 +1,13 @@
 {
   "type": "postgres",
-  "port": 5432,
+  "port": 5433,
   "host": "localhost",
   "username": "postgres",
   "password": "root",
-  "database": "rentx",
+  "database": "rentx_postgres",
+  "entities": [
+    "./src/modules/cars/entities/*.ts"
+  ],
   "migrations": ["./src/database/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/database/migrations"

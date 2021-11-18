@@ -17,12 +17,6 @@ services:
       - pgdata:/data/postgres
     network_mode: host
 
-  adminer:
-    image: adminer:latest
-    restart: always
-    ports:
-      - 8080:8080
-
   app:
     build: .
     container_name: rentx
