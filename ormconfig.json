@@ -6,10 +6,11 @@
   "password": "root",
   "database": "rentx_postgres",
   "entities": [
-    "./src/modules/cars/entities/*.ts"
+    "./src/modules/**/entities/*.ts"
   ],
   "migrations": ["./src/database/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }
 }
+
