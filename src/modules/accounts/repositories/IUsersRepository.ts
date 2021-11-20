@@ -3,10 +3,12 @@ import { User } from "../entities/User";
 
 class IUsersRepository {
   create({
+    id,
     name,
     email,
     password,
     driver_license,
+    avatar,
   }: ICreateUserDTO): Promise<void>;
 
   findByEmail(email: string): Promise<User>;
