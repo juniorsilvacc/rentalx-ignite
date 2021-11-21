@@ -1,7 +1,7 @@
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
 import { User } from "../entities/User";
 
-class IUsersRepository {
+interface IUsersRepository {
   create({
     id,
     name,
