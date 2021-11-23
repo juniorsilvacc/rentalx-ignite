@@ -13,6 +13,12 @@ interface ICarsRepository {
   }: ICreateCarDTO): Promise<Car>;
 
   findByLincensePlate(license_plate: string): Promise<Car>;
+
+  findAvailable(
+    category_id?: string,
+    brand?: string,
+    name?: string
+  ): Promise<Car[]>;
 }
 
 export { ICarsRepository };
