@@ -40,7 +40,6 @@
 **RF**
 
 - Deve ser possível cadastrar a imagem do carro.
-- Deve ser possível todos os carros.
 
 **RN**
 
