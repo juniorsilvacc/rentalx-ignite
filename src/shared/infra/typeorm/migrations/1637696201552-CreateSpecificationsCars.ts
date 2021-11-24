@@ -58,12 +58,12 @@ export class CreateSpecificationsCars1637696201552
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey(
       "specifications_cars",
-      "FKSpecificationCar"
+      "FKCarSpecification"
     );
 
     await queryRunner.dropForeignKey(
       "specifications_cars",
-      "FKCarSpecification"
+      "FKSpecificationCar"
     );
 
     await queryRunner.dropTable("specifications_cars");

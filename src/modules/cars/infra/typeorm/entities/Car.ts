@@ -16,7 +16,7 @@ import { Specification } from "./Specification";
 @Entity("cars")
 class Car {
   @PrimaryColumn()
-  id?: string;
+  id: string;
 
   @Column()
   name: string;
@@ -41,7 +41,7 @@ class Car {
 
   @ManyToOne(() => Category)
   @JoinColumn({ name: "category_id" })
-  category = Category;
+  category: Category;
 
   @Column()
   category_id: string;
