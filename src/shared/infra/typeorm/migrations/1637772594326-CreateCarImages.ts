@@ -5,7 +5,6 @@ export class CreateCarImages1637772594326 implements MigrationInterface {
     await queryRunner.createTable(
       new Table({
         name: "cars_image",
-
         columns: [
           {
             name: "id",
