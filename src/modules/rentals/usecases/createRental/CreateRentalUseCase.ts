@@ -1,3 +1,6 @@
+import { Rental } from "@modules/rentals/infra/entities/Rental";
+import { inject, injectable } from "tsyringe";
+
 import { AppError } from "@shared/errors/AppError";
 
 import { IRentalsRepository } from "../../repositories/IRentalsRepository";
@@ -8,19 +11,23 @@ interface IRequest {
   expected_return_date: Date;
 }
 
+@injectable()
 class CreateRentalUseCase {
-  constructor(private rentalsRepository: IRentalsRepository) {}
+  constructor(
+    @inject("RentalsRepository")
+    private rentalsRepository: IRentalsRepository
+  ) {}
 
   async execute({
     user_id,
     car_id,
     expected_return_date,
-  }: IRequest): Promise<void> {
+  }: IRequest): Promise<Rental> {
     const carUnavailable = await this.rentalsRepository.findOpenRentalByCar(
       car_id
     );
 
-    if (!carUnavailable) {
+    if (carUnavailable) {
       throw new AppError("Car is unavailable");
     }
 
@@ -28,9 +35,17 @@ class CreateRentalUseCase {
       user_id
     );
 
-    if (!rentalOpenToUser) {
+    if (rentalOpenToUser) {
       throw new AppError("There's a rental in progress for user");
     }
+
+    const rental = await this.rentalsRepository.create({
+      user_id,
+      car_id,
+      expected_return_date,
+    });
+
+    return rental;
   }
 }
 
