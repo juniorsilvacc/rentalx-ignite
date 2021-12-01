@@ -1,9 +1,13 @@
 import { Rental } from "@modules/rentals/infra/entities/Rental";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "@shared/errors/AppError";
 
 import { IRentalsRepository } from "../../repositories/IRentalsRepository";
+
+dayjs.extend(utc);
 
 interface IRequest {
   user_id: string;
@@ -37,6 +41,20 @@ class CreateRentalUseCase {
 
     if (rentalOpenToUser) {
       throw new AppError("There's a rental in progress for user");
+    }
+
+    // Aluguel deve ter duração mínima de 24h
+    const expectedReturnDateFormat = dayjs(expected_return_date)
+      .utc()
+      .local()
+      .format();
+
+    const dateNow = dayjs().utc().local().format();
+
+    const compare = dayjs(expectedReturnDateFormat).diff(dateNow, "hours");
+
+    if (compare < 24) {
+      throw new AppError("Invalid return time");
     }
 
     const rental = await this.rentalsRepository.create({
