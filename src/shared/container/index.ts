@@ -12,6 +12,8 @@ import { RentalsRepository } from "@modules/rentals/infra/repositories/RentalsRe
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { container } from "tsyringe";
 
+import "@shared/container/providers";
+
 // ICategoriesRepository
 container.registerSingleton<ICategoriesRepository>(
   "CategoriesRepository",
