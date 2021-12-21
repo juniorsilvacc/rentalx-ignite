@@ -6,11 +6,17 @@ import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
   name: string;
+
   description: string;
+
   deily_rate: number;
+
   license_plate: string;
+
   fine_amount: number;
+
   brand: string;
+
   category_id: string;
 }
 
@@ -23,11 +29,17 @@ class CreateCarUseCase {
 
   async execute({
     name,
+
     description,
+
     deily_rate,
+
     license_plate,
+
     fine_amount,
+
     brand,
+
     category_id,
   }: IRequest): Promise<Car> {
     const carAlreadyExists = await this.carsRepository.findByLincensePlate(
@@ -40,11 +52,17 @@ class CreateCarUseCase {
 
     const car = await this.carsRepository.create({
       name,
+
       description,
+
       deily_rate,
+
       license_plate,
+
       fine_amount,
+
       brand,
+
       category_id,
     });
 

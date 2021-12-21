@@ -8,7 +8,9 @@ interface ICarsRepository {
 
   findAvailable(
     category_id?: string,
+
     brand?: string,
+
     name?: string
   ): Promise<Car[]>;
 

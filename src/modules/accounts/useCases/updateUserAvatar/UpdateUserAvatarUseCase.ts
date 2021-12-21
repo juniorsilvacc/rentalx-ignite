@@ -4,13 +4,18 @@ import { inject, injectable } from "tsyringe";
 
 interface IRequest {
   user_id: string;
+
   avatar_file: string;
 }
 
 // Adicionar coluna avatar na tabela users
+
 // Refatorar usuário com coluna avatar
+
 // Configuração upload multer
+
 // Criar regra de negócio do upload
+
 // Criar o controller
 
 @injectable()

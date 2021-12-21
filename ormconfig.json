@@ -1,10 +1,10 @@
 {
   "type": "postgres",
-  "port": 5433,
+  "port": 5432,
   "host": "localhost",
   "username": "postgres",
   "password": "root",
-  "database": "rentx_postgres",
+  "database": "rentx",
   "entities": [
     "./src/modules/**/infra/typeorm/entities/*.ts"
   ],

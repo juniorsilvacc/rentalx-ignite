@@ -7,11 +7,17 @@ class CreateCarController {
   async handle(request: Request, response: Response): Promise<Response> {
     const {
       name,
+
       description,
+
       deily_rate,
+
       license_plate,
+
       fine_amount,
+
       brand,
+
       category_id,
     } = request.body;
 
@@ -19,11 +25,17 @@ class CreateCarController {
 
     const car = await createCarUseCase.execute({
       name,
+
       description,
+
       deily_rate,
+
       license_plate,
+
       fine_amount,
+
       brand,
+
       category_id,
     });
 

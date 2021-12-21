@@ -7,6 +7,7 @@ import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
   car_id: string;
+
   specifications_id: string[];
 }
 

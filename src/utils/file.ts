@@ -6,6 +6,7 @@ const deleteFile = async (filename: string) => {
   } catch (error) {
     return;
   }
+
   await fs.promises.unlink(filename);
 };
 

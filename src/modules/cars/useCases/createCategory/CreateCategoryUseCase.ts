@@ -5,6 +5,7 @@ import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
   name: string;
+
   description: string;
 }
 
@@ -26,6 +27,7 @@ class CreateCategoryUseCase {
 
     this.categoriesRepository.create({
       name,
+
       description,
     });
   }

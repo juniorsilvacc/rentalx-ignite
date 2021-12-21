@@ -5,10 +5,15 @@ import { User } from "../infra/typeorm/entities/User";
 interface IUsersRepository {
   create({
     id,
+
     name,
+
     email,
+
     password,
+
     driver_license,
+
     avatar,
   }: ICreateUserDTO): Promise<void>;
 

@@ -12,11 +12,13 @@ class SpecificationRepositoryInMemory implements ISpecificationRepository {
     const specification = this.specifications.find(
       (specification) => specification.name === name
     );
+
     return specification;
   }
 
   async create({
     name,
+
     description,
   }: ICreateSpecificationDTO): Promise<Specification> {
     const specification = new Specification();

@@ -7,23 +7,30 @@ import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
+
 let usersRepositoryInMemory: UserRepositoryInMemory;
+
 let createUserUseCase: CreateUserUseCase;
 
 describe("Authenticate User", () => {
   beforeEach(() => {
     usersRepositoryInMemory = new UserRepositoryInMemory();
+
     authenticateUserUseCase = new AuthenticateUserUseCase(
       usersRepositoryInMemory
     );
+
     createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
   });
 
   it("should be able to authenticate an user", async () => {
     const user: ICreateUserDTO = {
       name: "Junior Silva",
+
       email: "juniorsilva@gmail.com",
+
       password: "123456",
+
       driver_license: "123456789",
     };
 
@@ -31,6 +38,7 @@ describe("Authenticate User", () => {
 
     const result = await authenticateUserUseCase.execute({
       email: user.email,
+
       password: user.password,
     });
 
@@ -41,6 +49,7 @@ describe("Authenticate User", () => {
     expect(async () => {
       await authenticateUserUseCase.execute({
         email: "fakeuser@fakeuser.com",
+
         password: "123456",
       });
     }).rejects.toBeInstanceOf(AppError);
@@ -50,8 +59,11 @@ describe("Authenticate User", () => {
     expect(async () => {
       const user: ICreateUserDTO = {
         name: "User test error",
+
         email: "user@user.com",
+
         password: "123456",
+
         driver_license: "123456789",
       };
 
@@ -59,6 +71,7 @@ describe("Authenticate User", () => {
 
       await authenticateUserUseCase.execute({
         email: user.email,
+
         password: "incorrectPassword",
       });
     }).rejects.toBeInstanceOf(AppError);
@@ -68,8 +81,11 @@ describe("Authenticate User", () => {
     expect(async () => {
       const user: ICreateUserDTO = {
         name: "User test error",
+
         email: "error@error.com",
+
         password: "123456",
+
         driver_license: "123456789",
       };
 
@@ -77,6 +93,7 @@ describe("Authenticate User", () => {
 
       await authenticateUserUseCase.execute({
         email: "incorrectEmail",
+
         password: user.password,
       });
     }).rejects.toBeInstanceOf(AppError);

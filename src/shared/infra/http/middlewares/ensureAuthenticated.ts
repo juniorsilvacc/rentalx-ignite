@@ -10,7 +10,9 @@ interface IPayload {
 
 export async function ensureAuthenticated(
   request: Request,
+
   response: Response,
+
   next: NextFunction
 ) {
   const authHeader = request.headers.authorization;
@@ -24,6 +26,7 @@ export async function ensureAuthenticated(
   try {
     const { sub: user_id } = verify(
       token,
+
       "01d94b9cca210de5c8d3fdc2d5da8c6d"
     ) as IPayload;
 
