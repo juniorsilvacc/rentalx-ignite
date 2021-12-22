@@ -2,21 +2,13 @@ import { Specification } from "@modules/cars/infra/typeorm/entities/Specificatio
 
 interface ICreateCarDTO {
   name: string;
-
   description: string;
-
   deily_rate: number;
-
   license_plate: string;
-
   fine_amount: number;
-
   brand: string;
-
   category_id: string;
-
   specifications?: Specification[];
-
   id?: string;
 }
 

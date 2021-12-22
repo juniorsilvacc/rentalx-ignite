@@ -6,17 +6,11 @@ import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
   name: string;
-
   description: string;
-
   deily_rate: number;
-
   license_plate: string;
-
   fine_amount: number;
-
   brand: string;
-
   category_id: string;
 }
 
@@ -29,17 +23,11 @@ class CreateCarUseCase {
 
   async execute({
     name,
-
     description,
-
     deily_rate,
-
     license_plate,
-
     fine_amount,
-
     brand,
-
     category_id,
   }: IRequest): Promise<Car> {
     const carAlreadyExists = await this.carsRepository.findByLincensePlate(
@@ -47,22 +35,16 @@ class CreateCarUseCase {
     );
 
     if (carAlreadyExists) {
-      throw new AppError("Lincese plate already exists!");
+      throw new AppError("Car already exists!");
     }
 
     const car = await this.carsRepository.create({
       name,
-
       description,
-
       deily_rate,
-
       license_plate,
-
       fine_amount,
-
       brand,
-
       category_id,
     });
 

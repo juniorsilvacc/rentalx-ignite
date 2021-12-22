@@ -1,3 +1,4 @@
+import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
 import { RentalsRepositoryInMemory } from "@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory";
 import dayjs from "dayjs";
 
@@ -10,6 +11,8 @@ let createRentalUseCase: CreateRentalUseCase;
 
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory;
 
+let carsRepositoryInMemory: CarsRepositoryInMemory;
+
 let dayJsProvider: DayJsDateProvider;
 
 describe("Create Rental", () => {
@@ -18,12 +21,16 @@ describe("Create Rental", () => {
   beforeEach(() => {
     rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
 
+    carsRepositoryInMemory = new CarsRepositoryInMemory();
+
     dayJsProvider = new DayJsDateProvider();
 
     createRentalUseCase = new CreateRentalUseCase(
       rentalsRepositoryInMemory,
 
-      dayJsProvider
+      dayJsProvider,
+
+      carsRepositoryInMemory
     );
   });
 
