@@ -14,8 +14,6 @@ import { container } from "tsyringe";
 
 import "@shared/container/providers";
 
-// ICategoriesRepository
-
 container.registerSingleton<ICategoriesRepository>(
   "CategoriesRepository",
 
