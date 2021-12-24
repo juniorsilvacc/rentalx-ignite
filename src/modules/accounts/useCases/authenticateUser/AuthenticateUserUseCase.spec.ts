@@ -45,57 +45,35 @@ describe("Authenticate User", () => {
     expect(result).toHaveProperty("token");
   });
 
-  it("should not be able to authenticate an nonexistent user", () => {
-    expect(async () => {
-      await authenticateUserUseCase.execute({
-        email: "fakeuser@fakeuser.com",
+  it("should not be able to authenticate an noexistent user", async () => {
+    await expect(
+      authenticateUserUseCase.execute({
+        email: "false@email.com",
 
         password: "123456",
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toEqual(new AppError("Email or password incorrect"));
   });
 
-  it("should not be able to authenticate with incorrect password", () => {
-    expect(async () => {
-      const user: ICreateUserDTO = {
-        name: "User test error",
+  it("should not be able to authenticate with incorrect password", async () => {
+    const user: ICreateUserDTO = {
+      name: "User Test Error",
 
-        email: "user@user.com",
+      email: "user@user.com",
 
-        password: "123456",
+      password: "123456",
 
-        driver_license: "123456789",
-      };
+      driver_license: "9999",
+    };
 
-      await createUserUseCase.execute(user);
+    await createUserUseCase.execute(user);
 
-      await authenticateUserUseCase.execute({
+    await expect(
+      authenticateUserUseCase.execute({
         email: user.email,
 
         password: "incorrectPassword",
-      });
-    }).rejects.toBeInstanceOf(AppError);
-  });
-
-  it("should not be able to authenticate with incorrect email", () => {
-    expect(async () => {
-      const user: ICreateUserDTO = {
-        name: "User test error",
-
-        email: "error@error.com",
-
-        password: "123456",
-
-        driver_license: "123456789",
-      };
-
-      await createUserUseCase.execute(user);
-
-      await authenticateUserUseCase.execute({
-        email: "incorrectEmail",
-
-        password: user.password,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toEqual(new AppError("Email or password incorrect"));
   });
 });
