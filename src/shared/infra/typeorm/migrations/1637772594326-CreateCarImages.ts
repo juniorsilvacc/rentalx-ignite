@@ -9,29 +9,23 @@ export class CreateCarImages1637772594326 implements MigrationInterface {
         columns: [
           {
             name: "id",
-
             type: "uuid",
-
             isPrimary: true,
           },
 
           {
             name: "car_id",
-
             type: "uuid",
           },
 
           {
             name: "image_name",
-
             type: "varchar",
           },
 
           {
             name: "created_at",
-
             type: "timestamp",
-
             default: "now()",
           },
         ],
@@ -39,15 +33,10 @@ export class CreateCarImages1637772594326 implements MigrationInterface {
         foreignKeys: [
           {
             name: "FKCarImage",
-
             referencedTableName: "cars",
-
             referencedColumnNames: ["id"],
-
             columnNames: ["car_id"],
-
             onDelete: "SET NULL",
-
             onUpdate: "SET NULL",
           },
         ],

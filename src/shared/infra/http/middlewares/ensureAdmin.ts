@@ -5,9 +5,7 @@ import { AppError } from "@shared/errors/AppError";
 
 export async function ensureAdmin(
   request: Request,
-
   response: Response,
-
   next: NextFunction
 ) {
   const { id } = request.user;

@@ -11,9 +11,7 @@ interface IPayload {
 
 export async function ensureAuthenticated(
   request: Request,
-
   response: Response,
-
   next: NextFunction
 ) {
   const authHeader = request.headers.authorization;

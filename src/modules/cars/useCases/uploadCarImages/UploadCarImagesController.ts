@@ -19,7 +19,6 @@ class UploadCarImagesController {
 
     await uploadCarImagesUseCase.execute({
       car_id: id,
-
       images_name,
     });
 

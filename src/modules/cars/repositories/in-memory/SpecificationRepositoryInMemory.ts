@@ -18,7 +18,6 @@ class SpecificationRepositoryInMemory implements ISpecificationRepository {
 
   async create({
     name,
-
     description,
   }: ICreateSpecificationDTO): Promise<Specification> {
     const specification = new Specification();

@@ -18,19 +18,16 @@ import "@shared/container/providers";
 
 container.registerSingleton<ICategoriesRepository>(
   "CategoriesRepository",
-
   CategoriesRepository
 );
 
 container.registerSingleton<ISpecificationRepository>(
   "SpecificationsRepository",
-
   SpecificationsRepository
 );
 
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
-
   UsersRepository
 );
 
@@ -38,18 +35,15 @@ container.registerSingleton<ICarsRepository>("CarsRepository", CarsRepository);
 
 container.registerSingleton<ICarsImagesRepository>(
   "CarsImagesRepository",
-
   CarsImagesRepository
 );
 
 container.registerSingleton<IRentalsRepository>(
   "RentalsRepository",
-
   RentalsRepository
 );
 
 container.registerSingleton<IUsersTokensRepository>(
   "UsersTokensRepository",
-
   UsersTokensRepository
 );

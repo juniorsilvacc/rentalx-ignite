@@ -14,12 +14,9 @@ let specificationsRepositoryInMemory: SpecificationRepositoryInMemory;
 describe("Create Car Specification", () => {
   beforeEach(() => {
     carsRepositoryInMemory = new CarsRepositoryInMemory();
-
     specificationsRepositoryInMemory = new SpecificationRepositoryInMemory();
-
     createCarSpecificationUseCase = new CreateCarSpecificationUseCase(
       carsRepositoryInMemory,
-
       specificationsRepositoryInMemory
     );
   });
@@ -32,7 +29,6 @@ describe("Create Car Specification", () => {
     await expect(
       createCarSpecificationUseCase.execute({
         car_id,
-
         specifications_id,
       })
     ).rejects.toEqual(new AppError("Car does not exists"));
@@ -41,23 +37,16 @@ describe("Create Car Specification", () => {
   it("should be able to add a new specification to the car", async () => {
     const car = await carsRepositoryInMemory.create({
       name: "Name Car",
-
       description: "Description Car",
-
       deily_rate: 200,
-
       license_plate: "ABC-1234",
-
       fine_amount: 100,
-
       brand: "Brand",
-
       category_id: "Category",
     });
 
     const specification = await specificationsRepositoryInMemory.create({
       description: "Test",
-
       name: "Test",
     });
 
@@ -65,7 +54,6 @@ describe("Create Car Specification", () => {
 
     const specificationsCars = await createCarSpecificationUseCase.execute({
       car_id: car.id,
-
       specifications_id,
     });
 

@@ -4,7 +4,6 @@ import { ICarsImagesRepository } from "../../repositories/ICarsImagesRepository"
 
 interface IRequest {
   car_id: string;
-
   images_name: string[];
 }
 

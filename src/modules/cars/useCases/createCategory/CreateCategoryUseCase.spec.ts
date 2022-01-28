@@ -10,7 +10,6 @@ let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
 describe("Create Category", () => {
   beforeEach(() => {
     categoriesRepositoryInMemory = new CategoriesRepositoryInMemory();
-
     createCategoryUseCase = new CreateCategoryUseCase(
       categoriesRepositoryInMemory
     );
@@ -19,13 +18,11 @@ describe("Create Category", () => {
   it("should be able to create a new category", async () => {
     const category = {
       name: "Category Test",
-
       description: "Category Description Test",
     };
 
     await createCategoryUseCase.execute({
       name: category.name,
-
       description: category.description,
     });
 
@@ -39,20 +36,17 @@ describe("Create Category", () => {
   it("should not be able to create a new category with name exists", async () => {
     const category = {
       name: "Category Test",
-
       description: "Category Description Test",
     };
 
     await createCategoryUseCase.execute({
       name: category.name,
-
       description: category.description,
     });
 
     await expect(
       createCategoryUseCase.execute({
         name: category.name,
-
         description: category.description,
       })
     ).rejects.toEqual(new AppError("Category already exists"));
